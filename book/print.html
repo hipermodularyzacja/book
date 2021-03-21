@@ -1,0 +1,735 @@
+<!DOCTYPE HTML>
+<html lang="pl" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>hipermodularyzacja.pl</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Hiper Modularyzacja oprogramowania">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="0/front.html"><strong aria-hidden="true">1.</strong> okładka</a></li><li><a href="0/second.html"><strong aria-hidden="true">2.</strong> 1</a></li><li><a href="0/third.html"><strong aria-hidden="true">3.</strong> 2</a></li><li><a href="1/publisher.html"><strong aria-hidden="true">4.</strong> publisher</a></li><li><a href="1/dedykacja.html"><strong aria-hidden="true">5.</strong> dedykacja</a></li><li><a href="1/autor.html"><strong aria-hidden="true">6.</strong> autor</a></li><li><a href="1/podziekowania.html"><strong aria-hidden="true">7.</strong> podziękowania</a></li><li><a href="33/spis.html"><strong aria-hidden="true">8.</strong> Spis Treści</a></li><li><a href="1/1.html"><strong aria-hidden="true">9.</strong> Przedmowa</a></li><li><ol class="section"><li><a href="2/streszczenie.html"><strong aria-hidden="true">9.1.</strong> Streszczenie</a></li><li><a href="2/jezyk-niemiecki.html"><strong aria-hidden="true">9.2.</strong> jezyk-niemiecki</a></li><li><a href="2/wyroznik.html"><strong aria-hidden="true">9.3.</strong> wyroznik</a></li><li><a href="2/ramy.html"><strong aria-hidden="true">9.4.</strong> ramy</a></li><li><a href="2/konwencja.html"><strong aria-hidden="true">9.5.</strong> Konwencja</a></li><li><a href="1/dlaczego.html"><strong aria-hidden="true">9.6.</strong> dlaczego</a></li><li><a href="2/ksiazka.html"><strong aria-hidden="true">9.7.</strong> Dla kogo jest ta książka?</a></li><li><a href="1/bohaterowie.html"><strong aria-hidden="true">9.8.</strong> bohaterowie</a></li><li><a href="33/ocena.html"><strong aria-hidden="true">9.9.</strong> Ocena</a></li></ol></li><li><a href="33/back.html"><strong aria-hidden="true">10.</strong> tył</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">hipermodularyzacja.pl</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/hipermodularyzacja/book" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!--![](img/programista-de-book-icon.png)-->
+<p><img src="0/img/programista-de-book-256c.png" alt="" /></p>
+<h4><a class="header" href="#tags" id="tags">tags:</a></h4>
+<ul>
+<li>Polak na dzikim zachodzie</li>
+<li>Pewnego razu na dzikim zachodzie</li>
+<li>droga emigranta</li>
+<li>przygody</li>
+<li>nauka kultury i języka</li>
+</ul>
+<h4><a class="header" href="#pierwsza" id="pierwsza">pierwsza</a></h4>
+<p>Wil west</p>
+<p>Gold rush
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fjwcollinsauthor.files.wordpress.com%2F2018%2F01%2Fshutterstock_101275546.jpg%3Fw%3D300%26h%3D200&amp;imgrefurl=https%3A%2F%2Fjwcollinsauthor.com%2F2018%2F01%2F22%2Fthe-wild-west-5-interesting-facts-about-the-california-gold-rush%2F&amp;docid=wepjTdQEeYkOKM&amp;tbnid=vAzGiaSqHVnCdM%3A&amp;vet=10ahUKEwjgy4rigMzkAhUHx4UKHSziCGkQMwizAShQMFA..i&amp;w=300&amp;h=200&amp;bih=1615&amp;biw=1234&amp;q=wild%20west%20gold%20rush&amp;ved=0ahUKEwjgy4rigMzkAhUHx4UKHSziCGkQMwizAShQMFA&amp;iact=mrc&amp;uact=8</p>
+<hr />
+<h1><a class="header" href="#programistade" id="programistade">programista.de</a></h1>
+<p><em><strong>Pewnego razu na dzikim zachodzie</strong></em></p>
+<h1><a class="header" href="#tomasz-sapletta" id="tomasz-sapletta">Tomasz Sapletta</a></h1>
+<p><em><strong>Polski emigrant mieszkający w Essen</strong></em></p>
+<h1><a class="header" href="#programistade-1" id="programistade-1">programista.de</a></h1>
+<p><em><strong>Pewnego razu na dzikim zachodzie</strong></em></p>
+<h4><a class="header" href="#wydanie" id="wydanie">Wydanie</a></h4>
+<p>E-book, wersja 1.2019.09</p>
+<ul>
+<li>
+<p>Aktualna wersja do pobrania: </p>
+<ul>
+<li>book.programista.de/download/pdf</li>
+<li>book.programista.de/download/mobi</li>
+<li>book.programista.de/download/mp3</li>
+</ul>
+</li>
+<li>
+<p>wersja drukowana</p>
+</li>
+<li>
+<p>wersja audio do przesłuchania</p>
+</li>
+</ul>
+<h1><a class="header" href="#publisher" id="publisher">Publisher</a></h1>
+<p>All rights reserved. No part of this book may be reproduced, stored in a retrieval
+system, or transmitted in any form or by any means, without the prior written
+permission of the publisher, except in the case of brief quotations embedded in
+critical articles or reviews.
+Every effort has been made in the preparation of this book to ensure the accuracy
+of the information presented. However, the information contained in this book is
+sold without warranty, either express or implied. Neither the author, nor Packt
+Publishing, and its dealers and distributors will be held liable for any damages
+caused or alleged to be caused directly or indirectly by this book.
+Packt Publishing has endeavored to provide trademark information about all of the
+companies and products mentioned in this book by the appropriate use of capitals.
+However, Packt Publishing cannot guarantee the accuracy of this information.</p>
+<h1><a class="header" href="#dedykacja" id="dedykacja">Dedykacja</a></h1>
+<h4><a class="header" href="#o-autorze" id="o-autorze">O autorze</a></h4>
+<p>Nazywam się Tomasz Sapletta, zajmuję się zawodowo programowaniem, od 7 lat w Niemczech,
+gdzie miałem okazję pracować w wielu zespołach, firmach i meiszkać w wielu miejscach.</p>
+<p>Książka jest analizują obecnej sytuacji na rynku pracy w Polsce i Niemczech.</p>
+<p>Obecnie realizuję projekty dla firmy, która prowadzi wynajem samochodów, Buchbinder.de
+W wolnych chwilach programuję opensource.</p>
+<h4><a class="header" href="#książka-w-internecie" id="książka-w-internecie">książka w internecie</a></h4>
+<p>Oficjalna strona
+https://programista.de/</p>
+<p>Forum, tej książki
+https://forum.programista.de</p>
+<p>Oferty pracy w niemczech
+https://praca.programista.de</p>
+<h4><a class="header" href="#aktualne-projekty" id="aktualne-projekty">Aktualne projekty</a></h4>
+<p>Prowadzę Bloga w róznych jezykach:</p>
+<ul>
+<li>tom.sapletta.pl</li>
+<li>tom.sapletta.com</li>
+<li>tom.sapletta.de</li>
+</ul>
+<p>Darmowe oprogramowanie opensource:
++ https://github.com/tom-sapletta-com</p>
+<!--Obecnie pracuję nad projektem terminala online:-->
+<!--+ devopsterminal.com-->
+<!--Zapraszam do skorzystania z narzędzia do tworzenia modularnych stron internetowych:-->
+<!--+ apiunit.com-->
+<!--Narzędzie online do szybkiej wyceny projektu:-->
+<!--+ estymacja.pl -->
+<h4><a class="header" href="#oceń" id="oceń">Oceń</a></h4>
+<p>In this project on the first place I focus on its quality. Create good quality involves a lot of analysis, research and work. It takes a lot of time. If you like this project, learned something or you are using it in your applications, please give it a star ⭐️. This is the best motivation for me to continue this work. Thanks!</p>
+<h4><a class="header" href="#udostępnij" id="udostępnij">Udostępnij</a></h4>
+<p>As it is written above there are very few really good examples of this type of application. If you think this repository makes a difference and is worth it, please share it with your friends and on social networks. I will be extremely grateful.</p>
+<h4><a class="header" href="#kontakt-z-autorem" id="kontakt-z-autorem">Kontakt z autorem</a></h4>
+<p>Chętnie poznam Twoją opinię na temat treści, zapraszam do kontaktu: 
++ tom@sapletta.com</p>
+<hr />
+<p>kulisy powstania i motywacje przy pisaniu książki:</p>
+<!-- > [dlaczego](dlaczego.md) -->
+<h1><a class="header" href="#podziękowania" id="podziękowania">Podziękowania</a></h1>
+<p>dla 
+recenzentóww:</p>
+<p>mentorów:</p>
+<p>inspiratorów:</p>
+<p>T</p>
+<h1><a class="header" href="#spis-treści" id="spis-treści">Spis Treści</a></h1>
+<h1><a class="header" href="#1" id="1">1</a></h1>
+<h1><a class="header" href="#----------------" id="----------------">+- -- -- -- -- --</a></h1>
+<h1><a class="header" href="#autor" id="autor">Autor</a></h1>
+<p>Podstawowe informacje:</p>
+<ul>
+<li>o autorze</li>
+<li>o celu powstania</li>
+<li>o historii powstania książki</li>
+</ul>
+<p>Spis treści:</p>
+<ul>
+<li>
+<p><a href="1/1/dedykacja.html">dedykacja</a></p>
+</li>
+<li>
+<p><a href="1/1/podziekowania.html">podziękowania</a></p>
+</li>
+<li>
+<p><a href="1/1/autor.html">autor</a></p>
+</li>
+<li>
+<p><a href="1/1/dlaczego.html">dlaczego</a></p>
+</li>
+<li>
+<p><a href="1/1/bohaterowie.html">bohaterowie</a></p>
+</li>
+<li>
+<p><a href="1/1/dystrybucja.html">dystrybucja</a></p>
+</li>
+<li>
+<p><a href="1/1/publisher.html">publisher</a></p>
+</li>
+<li></li>
+</ul>
+<p><img src="1/../img/we-wy.png" alt="wejście-wyjście" /></p>
+<h4><a class="header" href="#opis-ilustracji" id="opis-ilustracji">Opis Ilustracji</a></h4>
+<p>Na ilustracji są przedstawione 3 elementy w poziomie</p>
+<ol>
+<li>Człowiek stojący, wyprostowany w spoczynku</li>
+<li>Duży blok kartonu o długości i wysokości 2 metry</li>
+<li>Człowiek aktywny w podskoku</li>
+</ol>
+<p>Relacja pomiędzy tymi elementami pokazuje przemianę pomiędzy pierwszą postacią a tą drugą, która na skutek przejścia przez ten magiczny karton zmieniła się
+z osoby biernej oczekującej w aktywną, wykonującej podskok.</p>
+<h4><a class="header" href="#qrcode" id="qrcode">Qrcode</a></h4>
+<p>do audiobooka online
+ebooka</p>
+<p>Następny rozdział:</p>
+<blockquote>
+<p><a href="1/2/2.html">Książka</a></p>
+</blockquote>
+<h4><a class="header" href="#streszczenie-zawartości" id="streszczenie-zawartości">Streszczenie zawartości</a></h4>
+<p>Zakres tematyczny jest na zmianę w każdym kolejnym rozdziale o technicznych kwestiach związanych z zawodem i kwestiach społeczno, organizacyjnych, prawnych.</p>
+<ul>
+<li>zawód programista</li>
+<li>kompetencje</li>
+<li>kariera</li>
+<li>narzędzia</li>
+</ul>
+<p>Ksiazka zostala podzielona na czesci w zaleznosci od tego na jakim etapie jestes i dokad zmierzasz.</p>
+<p>Mim celem jest stworzenie mapy mozliwosci z drogowskazami dla ludzi ktorzy 
+chca rozeznac czego tak na prawde szukaja i zadaja sobie pytania jak tam dotrzec.</p>
+<ol>
+<li>
+<p>Napisales juz kilka programow i chcialbys rozwijac te zdolnosci
+ale nie wiesz czy masz szanse na rynku niemieckim, bo znasz angielski</p>
+</li>
+<li>
+<p>Znasz jezyk niemiecki, kulture ale nie znasz sie na programowaniu:</p>
+</li>
+</ol>
+<p>//TODO: TUTAJ analiz, lub skok do rozdziału jak analizować swój profil 
+// Polecenie:- moje narzedzia + nodejs  + python + firma szukajaca junirorow</p>
+<p>glownie webdevelopment i web app, bo na to jest zapotrzebowanie,
+uzycie gotowych narzedzi  + wizualna apicra i apiunit
+od razu wejscie na pole wysokiej produktywnosci</p>
+<ol start="3">
+<li>
+<p>Znasz sie na programowaniu, bo robisz to od wielu lat, szukasz nowych wyzwań, 
+znasz angielski, być może niemiecki i kulturę niemiecką ale chcialbyś poznać jak najefektywniej bez marnowania energii i czasu na niepotrzebne dziaania dotrzec do pracodawcy niemieckiego i tam dalej rozwijac swoje umiejetnosci.</p>
+</li>
+<li>
+<p>jestes w niemczech, czyli znasz niemiecki, angielski, polski, ... i myslisz o zmianie zawodu ale obawiasz sie ze nie jest to proste i chcialbys sie upewnic ze to wlasciwa decyzja i okreslic jak to zrobic najefektywniej i bezpolesnie dla zycia prywatnego.</p>
+</li>
+<li>
+<p>Potrzebujesz wiecej niz jest zawarte w tej ksiazce a nie chcesz czekac do nastepnego wydania:
+kontakt ze mna w celu otrzymania  wskazowek pozwalajacych od razu na realizacje, usluga platna ale spersonalizowana z gwarancja zwrotu w razie niezadowolenia w ciagu 2 tygodni.</p>
+</li>
+</ol>
+<p>support dla niecierpliwych na dluzej jesli jest taka potrzeba</p>
+<ol start="6">
+<li>W zasadzie nie musisz czytac tej ksiazki bo nie masz zadnych pytan,
+zapraszamy do napisania kolejnej czesci, wzbogaconej o wiecej detali i aktualnych zagadnien z branzy.
+Jesli moglbys zaoferowac pomoc tym, ktorzy pracy poszukuja a lbo juz to robisz to zapraszamy</li>
+</ol>
+<p>Wprowadzające</p>
+<p>Co obejmuje wg Ciebie pojęcie &quot;programista systemów wbudowanych&quot;, czym się to różni od programista-elektronik, konstruktor-elektronik. Czy zalicza się do tego również ktoś kto programuje układy FPGA?
+Jaki był najbardziej ekscytujący projekt systemu embedded jaki widziałeś?
+Jak wygląda odpowiedzialność za wykonywaną pracę w branży embedded. Takie oprogramowanie jest krytyczne w wielu obszarach i obarczone wieloma normami i ogromnym ryzykiem. Interesuje mnie fakty czy trzeba podpisywać dodatkowe umowy które obarczają programistę kosztami za popełniane błędy itp.
+Biorąc pod uwagę pytanie 2, jak radzisz sobie psychicznie z dużą presją jaką niesie praca w embedded?
+Wytwarzanie oprogramowania</p>
+<p>Główne bolączki obecnych narzędzi do projektowania systemów wbudowanych.
+Główne bolączki społeczności systemów embedded - co powoduje dlaczego zmiany zachodzą powoli i branża nie jest chętna na wprowadzanie nowinek.
+Jak wygląda testowanie urządzenia elektronicznego (HW i SW) w korporacjach lub poważnych firmach (nie dotyczy firm typu &quot;Janusz Soft&quot;)?
+Jakie wzorce projektowe są najczęściej używane w systemach embedded (SW)?
+Jakie metodologie wytwarzania oprogramowania są stosowane najczęściej i w jakich przypadkach.
+Metody debuggowania systemów embedded
+Multithread programming w embedded
+Rynek Pracy</p>
+<p>Jak wygląda rynek pracy (PL i zagranica) dla robotyków?
+Rynek pracy w Polsce i za granicą - czym się różnią. Gdzie najczęściej są poszukiwani programiści embedded i jakie kompetencje w tej chwili są pożądane.
+Czy Polacy stanowią silną grupę inżynierów pod względem umiejętności względem innych krajów w kontekście embedded?
+Czy wg Ciebie praca w embedded jest opłacalna w Polsce biorąc pod uwagę, że można programować rzeczy mniej restrykcyjne, łatwiejsze i za większą kasę?
+Jak wg Ciebie będzie wyglądać sposób programowania systemów wbudowanych w przyszłości. Czy znajomość architektury i niskopoziomowych mechanizmów i języków będzie się potrzebna do pracy?
+Dlaczego warto zajmować się systemami wbudowanymi.
+Dlaczego nie warto zajmować się sytemami wbudowanymi.
+Dlaczego hardware developer - konstruktor elektronik jest gorzej opłacany na rynku pracy niż programista embedded pomimo tego że musi opanować o wiele trudniejszą i niszową wiedzę i ponosi o wiele większą odpowiedzialność (błąd w HW kosztuje więcej niż w SW)?
+Przyszłość inżynierów-projektantów obwodów PCB. Czy będą nadal potrzebni biorąc pod uwagę takie narzędzia jak autoroutery itp.?
+Mikroprzedsiębiorstwo vs średnia firma vs korporacja. Plusy i minusy.
+Wiedza, osobowość, społeczność</p>
+<p>Co jest najtrudniejsze w zgłębianiu wiedzy nt. systemów embedded? Na jakie obszary wiedzy akademickiej warto zwrócić szczególną uwagę oraz czego należy się douczyć samemu?
+Różnica charakterów pomiędzy &quot;ludźmi embedded&quot; a resztą IT (chęć dzielenia się wiedzą, kultura, docenianie dokonań innych, chęć pomocy)
+Programiści embedded to przeważnie fanatycy elektroniki i programowania - pasjonaci pełną gębą. Niestety często praca (a tym samym odpowiedzialność, terminy, problemy) pozwala zabrać ulubione hobby i totalnie je obrzydzić. Czy zauważyłeś w branży przypadki wypalenia zawodowego? Jak żyjesz na codzień by ciebie to nie spotkało?
+Jakich cechy charakteru powinien posiadać dobry projektant systemów wbudowanych?
+Polecane źródła wiedzy.
+Jakie obszary IT/inżynierii warto poznać w podstawowym stopniu by skutecznie realizować codzienne obowiązki programisty systemów wbudowanych?
+Pytanie pokrywa się trochę z pytaniami odnoście umiejętności. Wymień &quot;must have&quot; programisty systemów wbudowanych.
+Sprzęt, narzędzia</p>
+<p>Jak wygląda praca zespołowa nad projektem PCB i jakie systemy kontroli wersji są stosowane? Czym różni się praca nad PCB od pracy nad firmwarem biorąc pod uwagę utrzymanie produktu?
+Jak wygląda proces projektowania obwodu PCB (etapy)? Czy w tym fachu również są stosowane jakieś metodologie?
+Którzy producenci mikrokontrolerów dostarczają wg Ciebie BSP najlepszej jakości do swojego hardware?
+FPGA? Czy jest sens się zajmować tą niszową dziedziną?
+Czym pod względem HW i SW różnią się restrykcje dotyczące poszczególnych obszarów: przemysł medyczny, kosmiczny, automotive, dowolny inny?
+IoT, ML - nowe technologie</p>
+<p>IoT - przemyślenia, możliwości, zagrożenia
+Jak programista embedded musi wiedzieć o ML.
+Jak wygląda integracja systemów ML z systemami embedded?
+👍 2
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018
+Jak dlugo gosc zajmuje sie tym?
+Czy stale dziala w Embedded czy robil cos w miedzyczasie innego?
+Jak pozyskal pierwsza prace dot. Embedded Systems?
+W ilu i jakich projektach pracowal?
+Jaka mial tam odpowowiedzialnosc?
+Jakie zarobki sa osiagalne?</p>
+<p>@GKotfis
+Gratuluje pytan, tylko prosze abyscie na poczatku rozmowy zaznaczyli ze Embedded System to o wiele obszerniejsze zagadnienie niz sie ludziom (typowym programistom) moze wydawac i ze to najpierw zaczelo sie od Hardware a dopiero potem Software, wiec raczej to Software Dev powinni uczyc sie od Embedded Dev i wlasnie takie pytanie prosze zadac:</p>
+<p>Czego Software Dev moze nauczyc sie od Embedded DEv i czego by sie nauczyl, gdyby nim zostal.
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+O Gosciu:
+Ma kilka lat doswiadczenia zawodowego
+Uczestniczyl 'w daj sie poznac'
+https://ucgosu.pl/2017/03/daj-sie-poznac-2017/</p>
+<p>Jeden z projektow
+https://ucgosu.pl/2017/03/schemat-ideowy-robota/</p>
+<p>Autor napisal, ze uzywa tam procesora, co jest niestosowne, w skali mikro mamy mikrokotntrolery, poniewaz sam procesor jest tylko jednym z elementow mikrokontrolera
+https://pl.wikipedia.org/wiki/Mikrokontroler
+mikrokomputer jednoukładowy – scalony system mikroprocesorowy, zrealizowany w postaci pojedynczego układu scalonego zawierającego jednostkę centralną (CPU), pamięć RAM oraz rozbudowane układy wejścia-wyjścia i na ogół pamięć programu jako FRAM, MRAM, ROM lub Flash.</p>
+<p>Blog
+https://ucgosu.pl/o-mnie/</p>
+<p>Repozytoria GIT na githubie
+https://github.com/ucgosupl?tab=repositories</p>
+<p>Kilka info z CV
+https://pl.linkedin.com/in/maciej-gajdzica-156370a8</p>
+<p>Starszy Projektant - Programista
+SOLWIT SA
+October 2015 – Present 3 years 2 months
+Gdańsk, woj. pomorskie, Polska</p>
+<p>Implementacja systemu embedded dla firmy z branży transportu kolejowego spełniającego normy bezpieczeństwa i SIL4.</p>
+<p>Software Engineer
+May 2014 – September 2015 1 year 5 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Rozwój Intel Data Plane Development Kit - biblioteki przetwarzającej pakiety sieciowe dla systemów unixowych napisanej w języku C.</p>
+<p>Software Specialist
+Innovation Code
+September 2012 – May 2014 1 year 9 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Rozwój systemów wbudowanych dla branży automatyki budynkowej wyposażonych w webserwer i integrację z systemami BMS komunikującymi się przy pomocy protokołów Modbus, Lonworks i BACnet. Do dodatkowych obowiązków należało zarządzanie projektami, praca koncepcyjna i prezentacja działających urządzeń u klientów.</p>
+<p>Software Test Engineer
+Intel Corporation
+June 2012 – August 2012 3 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Tworzenie testów automatycznych pisanych w języku C# dla płyt głównych Intela do ultrabooków.
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+Dla Ciekawych poszukiwania pracy polecam
+https://www.glassdoor.de/Job/firmware-entwickler-jobs-SRCH_KO0,19.htm</p>
+<p>Z tego co widzialem zarobki nizsze niz typowego programisty.
+https://www.glassdoor.de/Job/firmware-entwickler-jobs-SRCH_KO0,19.htm</p>
+<p>Embedded-Software-Entwickler
+Firmware-Entwickler
+Tez jestem ciekaw dlaczego ludzie z papierami zarabiaja mniej, w dodatku faktyczna wiedza musi byc znacznie obszerniejsza niz typowego Software Dev.</p>
+<p>20 lat temu bardzo chcialem byc Embedded-Software-Entwickler ale w PL bylo malo ofert w ogole, a pracy dla elektronikow konstruktorow bylo niewiele, bo tylko duze firmy pozwalaly sobie na taki dzial konstruktorski, np: w Gdyni:
+http://www.radmor.com.pl/
+https://www.vector.net/en/home/</p>
+<p>Na przelomie 2000 roku byl kierunek chiny nieliczni jak potentant w Alarmach - Satel ciagle utrzymywal linie produkcyjna w Gdansku.</p>
+<p>Szkoda, bo gdyby nie brak miejsc pracy, to bym dzis mial troche inna profesje i placil podatki w Polsce - dobrze tez przypomniec troche historie, by zrozumiec to co dzieje sie dzis.
+Mimo wszystko Polska nadal nie daje takiej szansy na rozwoj, chociaz wolalbym sie mylic, byc moze gosc rzuci pozytywnym swiatlem?
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+przepraszam za lawine postow, jednak zalezy mi na przekazaniu prawdy o tej osobie, gosc jest jeszcze mlody i nie na wszystko musi znac odpowiedzi, wiec bede wyrozumialy po emisji audycji.
+Ma zaledwie kilka lat doswiadczenia i nie jest przeciez nauczycielem elektroniki, wiec w zasadzie moze lepiej gdyby opisal te spraw z perspektywy swoich historii a nie &quot;eksperta&quot;
+Nie ma tez doswiadczenia miedzynarodowego, wiec moze warto zawezic audycje do pewnego wycinka Polskiej - Gdanskiej rzeczywistosci.</p>
+<p>Moze Gosc by powiedzial cos o dzialalnosci poza praca, czy udziela sie w jakis spolecznosciach i dzieli wiedza, albo cos poleci z trojmiasta?
+Czy gosc zna jakies startupy z Embedded Systems poza praca ?
+Czy jesli Gosc ma wiedze i doswiadczenie to moglby cos powiedziec o tym jak to wyglada od srodka?
+👍 1</p>
+<h1><a class="header" href="#język-niemiecki-w-książce" id="język-niemiecki-w-książce">Język niemiecki w książce</a></h1>
+<p>Nawet jeśli historia nie okazę się dla Ciebie ciekawa
+to obecność niemieckich tytułów</p>
+<p>oraz znaczeń wielu wyrażeń</p>
+<p>pozwoli oswoić się częściowo z pewnymi nazwami</p>
+<p>to dodatkowy benefit</p>
+<h4><a class="header" href="#czym-wyróżnia-się-książka" id="czym-wyróżnia-się-książka">Czym wyróżnia się książka</a></h4>
+<p>o których warto zebrać kilka różnych opinii z różnych punktów widzenia.</p>
+<p>Ta pozycja skupia się na tym, co konkretnie robić i jak przygotować się do pierwszej pracy, </p>
+<p>podczas gdy 
+Zawód </p>
+<p>skupia większą uwagę na błędach i pułapkach, na
+które możesz wpaść w karierze programisty oraz daje sporo refleksji o zawodzie programisty
+jako takim, często obalając mity jakie panują w mediach.</p>
+<h4><a class="header" href="#wziąłem-pod-uwagę-że-czytelnik" id="wziąłem-pod-uwagę-że-czytelnik">Wziąłem pod uwagę, że czytelnik</a></h4>
+<p>może znać książki z 2018-2019 roku z dziedziny IT
+więc mogę ominąc te rzeczy tam omawiane i przytoczyć książki innych  autorów omawiające szerzej pewne sprawy
+z ostatnich lat. </p>
+<h4><a class="header" href="#programowanie-a-życie" id="programowanie-a-życie">Programowanie a życie</a></h4>
+<p>Są na tym świecie ludzie, którzy myślą że zostaną programistą po tym, jak przeczytają książkę o byciu programistą, jednak są też tacy, którzy wiedzą, że trzeba się uczyć, szukać informacji samodzielnie, być wybitnie cierpliwym i upartym...</p>
+<h4><a class="header" href="#obecne-podejście-do-pisania-po-co-pisać-książki" id="obecne-podejście-do-pisania-po-co-pisać-książki">Obecne podejście do pisania, po co pisać książki?</a></h4>
+<p>Wchodząc w rolę pisarza postanowiłem przemyśleć co i w jaki sposób, by było ciekawie.
+Chciałem przekazać kilka informacji, które niekoniecznie muszą być znane nawet tym, którzy mieszkają od lat w Niemczech.</p>
+<h4><a class="header" href="#streszczenie" id="streszczenie">Streszczenie</a></h4>
+<p>Książka opisuje co to jest IT, jakie perspektywy</p>
+<h4><a class="header" href="#kontekst-ramy" id="kontekst-ramy">Kontekst, ramy</a></h4>
+<p>Treść książki osadzona jest w określonym ograniczonym kontekście:</p>
+<ul>
+<li>branża IT</li>
+<li>rynek pracy w niemczech</li>
+<li>przeprowadzka lub/i przekwalifikowanie się</li>
+<li>ograniczenia temu towarzyszące </li>
+</ul>
+<h4><a class="header" href="#pytania-i-odpowiedzi" id="pytania-i-odpowiedzi">Pytania i odpowiedzi</a></h4>
+<p>Jaki jest na prawdę kraj i ludzie tam zamieszkujący?</p>
+<p>Co sprawia, że ten Niemcy ciągle potrzebują obcokrajowców do budowania największej europejskiej gospodarki?</p>
+<p>Co nowego możemy dowiedzieć się o naszych zachodnich sąsiadach?</p>
+<p>często dowiadujemy się jak z mediów, historii w szkołach i opowieści znajomych?</p>
+<p>Ale dlaczego tak jest, już trudniej odpowiedzieć...</p>
+<p>Jak to wygląda w XXI wieku z perspektywy kilku ostatnich lat?</p>
+<p>Czy warto zdecydować się na zmianę wszystkiego?</p>
+<ul>
+<li>kultury</li>
+<li>języka</li>
+<li>obowiązujących przepisów prawa</li>
+<li>pracy</li>
+</ul>
+<p>Mam nadzieję, że te wątpliwości zostaną ostatecznie rozwiane w oparciu o informacje zawarte w tej książce.</p>
+<h1><a class="header" href="#konwencja" id="konwencja">Konwencja</a></h1>
+<p>Wynika z mojego sposobu funkcjonowania</p>
+<h4><a class="header" href="#moje-pióro-czyli-jak-piszę" id="moje-pióro-czyli-jak-piszę">Moje pióro, czyli jak piszę?</a></h4>
+<p>Niektórzy przyjmują dobrą strategię - pisać krótko.
+Inni rozwlekają treść na wątki, które mogą być zamknięte w kilku zdaniach a nie stronach.
+Jak poznać, kiedy jest za krótko, tzn niejasno, a kiedy za dużo?</p>
+<p>Można jeszcze inaczej ...</p>
+<h4><a class="header" href="#negatywne" id="negatywne">Negatywne</a></h4>
+<p>w kilku rozdziałach przeprowadziłem analizę sytuacji po dwóch stronach:
++ negatywna
++ pozytywna </p>
+<p>oczywiście zaczynam od negatywnej, w sensie mentalnym, emocjonalnym, ale w praktyce
+każde negatywne doświadczenie jest źródłem wiedzy o nas samych, dzięki czemu możemy następnym razem 
+nie popełnić tego samego błędu.</p>
+<h4><a class="header" href="#moja-strategia-tworzenia" id="moja-strategia-tworzenia">Moja strategia tworzenia</a></h4>
+<p>Nie jestem zawodowym pisarzem, ale jestem zawodowym programistą, a więc przyjąłem standardy, którymi kieruję się na co dzień.</p>
+<p>Przy tworzeniu oprogramowania dzielę zadania na jak najmniejsze identyfikowalne części, które mają konkretny cel, najlepiej jeden.
+Nazywam to modularyzacja, jest to też zgodne ze wzorcem single responsibility.</p>
+<p>Każda część jest indywidualna, być może książce przez to brakuje polotu, ale to nie jest książka mająca wywyłać emocje i zachwyty.</p>
+<p>Najpierw tworzę specyfyikację:</p>
+<ul>
+<li>co w ogóle chcę osiągnąć</li>
+<li>potem nazywam każdą część</li>
+</ul>
+<p>Dlatego w każdym rozdziale jest pierwsza strona opisująca:</p>
+<ul>
+<li>po co powstał ten rozdział</li>
+<li>co ma zawierać ten rozdział</li>
+<li>dodatkowe informacje</li>
+<li>rysunek dający skrótowy obraz zawartości </li>
+</ul>
+<p>W ten sposób łatwo ktoś kto czyta może udzielić mi rady, czy coś jest niepotrzeben, wówczas łatwiej uciąć,
+lub coś jest niełatwe, wtedy mogę po prostu napisać od nowa jakąś część.</p>
+<hr />
+<p><em>Moje życzenie, jest takie, by tą książkę czytało się jak dobry programistyczny kod.
+Klarownie, bez zbędnych pętli.</em></p>
+<h4><a class="header" href="#dlaczego-powstała-ta-książka-" id="dlaczego-powstała-ta-książka-">Dlaczego powstała ta książka ?</a></h4>
+<p>Na codzień tworzę wolne i otwarte orpgramowanie: open-source
+chciałbym również podzielić się czymś więcej, poprzez wymianę doświadczeń open - experience</p>
+<p>Chciałem napisać książkę, aby zebrać myśli, podsumować, bo byłem na rodzicielskim urlopie 7 miesięcy, (a mogłem być 12, 5 zostawiłem dla żony) a to sprzyjało mentalnemu urlopowi od życia zawodowego.</p>
+<p>Za ten urlop miałem płatne 65%, ale przy stawkach programistów, da się od pierwszego do pierwszego przeżyć.</p>
+<p>Pewne rzeczy w naszym życiu przychodzą w sposób naturalny, dlatego trzeba dać naszemu organizmowi odpocząć i energę do działania a wtedy sieci neuronowe już będą pracowały na naszą korzyść, mam też na uwadze zagrożenia, dlatego</p>
+<p>najważniejsze w mojej ocenie z perspektywy w życiu jest zwyczajnie nie robienie czasem czegoś, 
+z uwagi na ryzyko utracenia wielu innych rzeczy, wydaje się oczywiste, ale pokus na co dzień mamy wiele, emocje mnie czasem zwodzą, 
+dlatego mimo, że żyjemy z rodziną w dużym mieście nie prowadzimy życia towarzyskiego, niezależnie od lockdown'u.
+Bo tak nazywam te kilka spotkań w ciągu roku, temu też sprzyja tutejsza kultura o czym szerzej w rozdziale:
+// TODO: rozdział</p>
+<p>https://pl.wikipedia.org/wiki/Essen</p>
+<h4><a class="header" href="#jak-długo-była-pisana" id="jak-długo-była-pisana">Jak długo była pisana</a></h4>
+<p>2 lata z przerwami, na spojrzenie z dystansu,
+na zauważnie zmian, terndów, wyciągnięcie wniosków w kontekście spraw poruszanych w książce</p>
+<p>SUmarycznie to kilka tygodni, czyli poonad 200h
+w wolnym czasie pomiędzy wychowaniem dzieci.
+Co zwłaszcza w czasach lockdown'u jest dość absorbujące.</p>
+<p>Trzeba jednak założyć fakt, że wcześniej przygotowywałem kilka myśli i analiz, które przyczyniły się do mentalnej dojrzałości.</p>
+<p>Gdyż sam fakt postanowienia napisania książki to była chęć, potrzeba zebrania 7 lat doświadczeń w jednym miejscu,
+a blog w mojej ocenie nie jest dobrym miejscem na usystematyzowane i ustrulktaryzowane wiadomośći, które dopiero w całości
+pozwalają na ocenę sytuacji.</p>
+<p>Z tą książką jest jak z moim kodem, pisanym w wolnej chwili, pozostawionym, po czasie na nowo kontynuowanym, by zrobić krok na przód, ale też nie zapomnieć zrobić drugiego po dłuższym oderwaniu.
+i nie refaktoryzwoać, z wuagi na zbyt szybkie decyzje nieklarownych w sprawach, wymagjących dłuższego mentalnego przemyślenia.</p>
+<h4><a class="header" href="#nieopublikowane-rozdziały" id="nieopublikowane-rozdziały">Nieopublikowane rozdziały</a></h4>
+<p>Postanowiłem, że nie opublikuję w książce rodziału dotyczącego kultury, 
+ponieważ może nie każdego to interesować i trudno jest mówić o czymś co należy poznać w praktyce, 
+przeżyć.</p>
+<p>Postanowiłem, że to bęzie punktem wyjścia do bloga na temat róznic niemeicko polskich
+i będzie to forum, gdzie każdy będzie mógł podzielić się swoją wiedzą, zweryfikowac je 
+w żywej dyskusji, tk by budowac aktualną formę wiedzy o niemczech, czym są dzisiaj, czym 
+mogą być jutro.</p>
+<h4><a class="header" href="#po-co-książka-o-niemckiej-kulturze" id="po-co-książka-o-niemckiej-kulturze">Po co książka o niemckiej kulturze?</a></h4>
+<ul>
+<li>bo okazuje się, że poznanie języka nie wystarczy</li>
+<li>kultura to coś ponad słowami</li>
+</ul>
+<p>znajomość kultury pozwala na rozumienie wiele spraw bez wyjasniania
+bo znamy kontekst i stosunek partnera w rozmowie do treści o których mówimy.</p>
+<p>Ta wiedza może być tym bardziej przydatna im mniej znamy język, gdyż znajomość akcentu i języka można się nauczyć,</p>
+<p>ale jak się nie zna kulturty to można szybko zrazić do siebie ludzi nie wiedząc nawet o tym!</p>
+<hr />
+<!-- > [bohaterowie](bohaterowie.md) -->
+<h1><a class="header" href="#książka" id="książka">Książka</a></h1>
+<h4><a class="header" href="#temat-przewodni" id="temat-przewodni">Temat przewodni</a></h4>
+<p>Książka napisana po polsku dla Polaków o Polakach w Niemczech w kontekście aktualnych zmian i ewentualnego wyjazdu w roku 2020.
+Autor wyrusza w podróż po jego ostatnich 7 latach życia nie tylko na zachodzie ale również południu Niemiec na Bawarii.
+Przytoczone wywiady i dane, pozwalają na zapoznanie się z aktualną sytuacją po drugiej strony Odry.</p>
+<h4><a class="header" href="#cel" id="cel">Cel</a></h4>
+<p>Celem książki nie było wchodzenie w techniczne zagadnienia, a kulturowe, społeczne, prawne, gdyż to one decydują o tym 
+czy się zostaje na dłużej w danym kraju.</p>
+<p>Istotne są też obecne warunki życia, komfort.
+Uznałem, że dla każdego kto wyjeżdża za granicę, zwłaszcza samotnie, istotne jest by przez pierwsze tygodnie mieć jasny obraz sytuacji
+i wiedzieć czego się spodziewać, jakie są normy i co nie mieści się w jej granicach. </p>
+<ul>
+<li>Budowanie świadomości na temat kultury Niemieckiej</li>
+</ul>
+<h4><a class="header" href="#determinacja" id="determinacja">Determinacja</a></h4>
+<p>Drogi czytelniku, jeśli szukasz motywacji do wyjazdu to nie znajdziesz jej w tej książce.
+Od 7 lat nie przekonałem ani jednej osoby do wyjazdu mimo, że wypowiadałem się raczej pozytywnie.
+Z drugiej strony, prawda jest taka, że ja sam bym siebie nie przekonał do pozostania w Polsce.
+Nie chciałbym nikogo przekonywać do zmiany przekonań.</p>
+<p>Tak znaczące zmiany w czyimś życiu są raczej:</p>
+<ul>
+<li>rezultatem a nie przyczyną</li>
+<li>determinacją a nie motywacją</li>
+<li>silnym wewnętrznym przekonaniem a nie emocją wynikającej z namowy, czy przeczytania wiadomości, artykułu czy książki.</li>
+</ul>
+<h4><a class="header" href="#czym-nie-jest-ta-książka" id="czym-nie-jest-ta-książka">Czym nie jest ta książka</a></h4>
+<p>Książka to miks wiedzy, zebranej z kilkudziesięciu książek, jak sam autor stwierdza, że nie wszystko musi się “kompilować” to znaczy, że część wiedzy to dość mocno wyrwane z kontekstu wnioski, które przy wgłębieniu się w temat mogę się okazać trochę naciągane. </p>
+<h4><a class="header" href="#o-czym-nie-jest" id="o-czym-nie-jest">O czym nie jest</a></h4>
+<p>Obecnie w dobie otwartych mediów trudno nie powielić w różnych formach tego samego tematu,
+dlatego tym bardziej warto sięgać do książek opisujących wąsko pewne zagadnienia a przy tym kompleksowo je omawiając
+inaczej niż w przypadku artykułów, czy opinii, które zawierają wyrywkowe spojrzenie na pewne fakty.</p>
+<h4><a class="header" href="#dla-kogo-jest" id="dla-kogo-jest">Dla kogo jest</a></h4>
+<p>w pierwszej kolejności dla programistów zainteresowanych emigracją do krajów niemieckojęzycznych.
+W drugiej dla Polaków, którzy chcą się upewnić, że nie chcą emigrować, chcą świadomie podjąć decyzję.
+W trzeciej dla tych, którzy jeszcze nie są programistami a mają wątpliwości, nawet jeśli nie wyjadą po lekturze tej książki, to
+mogą poprzez zawarte w książce informacje zwiększyć świadomość na temat rynku pracy i własnej wartości na nim.
+Ta ksiazka jest napisana dla tych, ktorzy zajmuja sie lub chca zajmowac profesjonalnie programowaniem.</p>
+<p>Dla tych, którzy są programistami, ale myślą o przekwalifikowaniu
+np webdev do programisty desktop, itp</p>
+<p>Dla tych, którzy nie chcą na długo, ale chcą spróbować, wiedzą, że nie wytrzymają dłużej za granicą, ale chcą mieć ciekawe
+doświadzczenie, bo np. mają możliwość wyjazdu w delegacje
+lub zamierzają otworzyć firmę w niemczech</p>
+<h4><a class="header" href="#dla-kogo-nie-jest" id="dla-kogo-nie-jest">Dla kogo nie jest</a></h4>
+<p>dla tych, którzy:</p>
+<ul>
+<li>wracają z zachodu na wschód.</li>
+<li>chcieliby by ta książka zmieniła ich życie...</li>
+</ul>
+<h4><a class="header" href="#o-kim-jest" id="o-kim-jest">O kim jest</a></h4>
+<p>o ludziach, którzy nie bali się zaryzykować i stale podnoszą swoje kwalifikacje, za które otrzymują dobre wynagrodzenie
+Którzy zastanawiają się co mogliby zrobić lepiej.</p>
+<h4><a class="header" href="#o-kim-nie-jest" id="o-kim-nie-jest">O kim nie jest</a></h4>
+<p>o gwiazdach Youtuba, celebrytach internetowych, sławach naszych czasów</p>
+<h1><a class="header" href="#bohaterowie" id="bohaterowie">Bohaterowie</a></h1>
+<h4><a class="header" href="#doświadczenia-historie" id="doświadczenia-historie">doświadczenia, historie</a></h4>
+<p>zebrane doświadczenia kilku ludzi i podsumowanie wniosków z tego wynikających
+język przystęny, prowadzący do wyjaśnienia kilku stereotypów dotykająccyh obu stron (rzeki) Odry.</p>
+<p>Bohaterami książki są:</p>
+<p>Szablon opisu:</p>
+<h4><a class="header" href="#charketrystka-czym-się-zajmuje-się-obecnie" id="charketrystka-czym-się-zajmuje-się-obecnie">charketrystka, czym się zajmuje się obecnie</a></h4>
+<h4><a class="header" href="#historia-czym-zajmowałem-się-w-cześniej" id="historia-czym-zajmowałem-się-w-cześniej">historia, czym zajmowałem się w cześniej</a></h4>
+<h4><a class="header" href="#początek-jak-zaczałem-programować" id="początek-jak-zaczałem-programować">początek, jak zaczałem programować</a></h4>
+<h4><a class="header" href="#początek-w-de" id="początek-w-de">początek w de</a></h4>
+<h4><a class="header" href="#ew-koniec-w-de" id="ew-koniec-w-de">ew. koniec w DE</a></h4>
+<h4><a class="header" href="#marzenia-plany-kontra-rzeczywistość" id="marzenia-plany-kontra-rzeczywistość">Marzenia, plany kontra rzeczywistość</a></h4>
+<h4><a class="header" href="#strony-w-procesie-poszukiwania-i-walki-o-pracę" id="strony-w-procesie-poszukiwania-i-walki-o-pracę">Strony w procesie poszukiwania i walki o pracę</a></h4>
+<ul>
+<li>
+<p>kandydaci na stanowiska</p>
+</li>
+<li>
+<p>firmy rekrutujące
+cf, </p>
+</li>
+<li>
+<p>pracodawcy</p>
+</li>
+</ul>
+<ul>
+<li>ktos z taxi, mehr, inno, check, buch, waw</li>
+</ul>
+<h4><a class="header" href="#rola-każdej-ze-stron" id="rola-każdej-ze-stron">Rola każdej ze stron</a></h4>
+<p>na jakie kompromisy pójdzie polski pracodawca a na jakie niemiecki
+gdzie leży punkt ciężkości, na co się zgodzi a na co już nie </p>
+<!-- > [Analiza](../2/analiza.md) -->
+<h1><a class="header" href="#ocena" id="ocena">Ocena</a></h1>
+<h1><a class="header" href="#tył" id="tył">tył</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

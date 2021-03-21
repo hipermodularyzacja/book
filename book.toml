@@ -1,0 +1,13 @@
+[book]
+language = "pl"
+multilingual = false
+src = "src"
+title = "hipermodularyzacja.pl"
+description = "Hiper Modularyzacja oprogramowania"
+authors = ["Tom Sapletta"]
+[output.html]
+additional-css = ["custom.css"]
+git-repository-url = "https://github.com/hipermodularyzacja/book"
+git-repository-icon = "fa-github"
+[output.html.search]
+limit-results = 15
