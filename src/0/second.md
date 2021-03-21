@@ -1,4 +1,4 @@
-# programista.de
+# hipermodularyzacja.pl
 ***Pewnego razu na dzikim zachodzie***
 
 

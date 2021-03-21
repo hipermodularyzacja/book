@@ -11,14 +11,14 @@ W wolnych chwilach programuję opensource.
 #### książka w internecie
 
 Oficjalna strona
-https://programista.de/
+https://hipermodularyzacja.pl/
 
 Forum, tej książki
-https://forum.programista.de
+https://forum.hipermodularyzacja.pl
 
 
 Oferty pracy w niemczech
-https://praca.programista.de
+https://praca.hipermodularyzacja.pl
 
 
 #### Aktualne projekty
