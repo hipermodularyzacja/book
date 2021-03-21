@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="pl" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Streszczenie - hipermodularyzacja.pl</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Hiper Modularyzacja oprogramowania">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../custom.css">
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="../0/front.html"><strong aria-hidden="true">1.</strong> okładka</a></li><li><a href="../0/second.html"><strong aria-hidden="true">2.</strong> 1</a></li><li><a href="../0/third.html"><strong aria-hidden="true">3.</strong> 2</a></li><li><a href="../1/publisher.html"><strong aria-hidden="true">4.</strong> publisher</a></li><li><a href="../1/dedykacja.html"><strong aria-hidden="true">5.</strong> dedykacja</a></li><li><a href="../1/autor.html"><strong aria-hidden="true">6.</strong> autor</a></li><li><a href="../1/podziekowania.html"><strong aria-hidden="true">7.</strong> podziękowania</a></li><li><a href="../33/spis.html"><strong aria-hidden="true">8.</strong> Spis Treści</a></li><li><a href="../1/1.html"><strong aria-hidden="true">9.</strong> Przedmowa</a></li><li><ol class="section"><li><a href="../2/streszczenie.html" class="active"><strong aria-hidden="true">9.1.</strong> Streszczenie</a></li><li><a href="../2/jezyk-niemiecki.html"><strong aria-hidden="true">9.2.</strong> jezyk-niemiecki</a></li><li><a href="../2/wyroznik.html"><strong aria-hidden="true">9.3.</strong> wyroznik</a></li><li><a href="../2/ramy.html"><strong aria-hidden="true">9.4.</strong> ramy</a></li><li><a href="../2/konwencja.html"><strong aria-hidden="true">9.5.</strong> Konwencja</a></li><li><a href="../1/dlaczego.html"><strong aria-hidden="true">9.6.</strong> dlaczego</a></li><li><a href="../2/ksiazka.html"><strong aria-hidden="true">9.7.</strong> Dla kogo jest ta książka?</a></li><li><a href="../1/bohaterowie.html"><strong aria-hidden="true">9.8.</strong> bohaterowie</a></li><li><a href="../33/ocena.html"><strong aria-hidden="true">9.9.</strong> Ocena</a></li></ol></li><li><a href="../33/back.html"><strong aria-hidden="true">10.</strong> tył</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">hipermodularyzacja.pl</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/hipermodularyzacja/book" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4><a class="header" href="#streszczenie-zawartości" id="streszczenie-zawartości">Streszczenie zawartości</a></h4>
+<p>Zakres tematyczny jest na zmianę w każdym kolejnym rozdziale o technicznych kwestiach związanych z zawodem i kwestiach społeczno, organizacyjnych, prawnych.</p>
+<ul>
+<li>zawód programista</li>
+<li>kompetencje</li>
+<li>kariera</li>
+<li>narzędzia</li>
+</ul>
+<p>Ksiazka zostala podzielona na czesci w zaleznosci od tego na jakim etapie jestes i dokad zmierzasz.</p>
+<p>Mim celem jest stworzenie mapy mozliwosci z drogowskazami dla ludzi ktorzy 
+chca rozeznac czego tak na prawde szukaja i zadaja sobie pytania jak tam dotrzec.</p>
+<ol>
+<li>
+<p>Napisales juz kilka programow i chcialbys rozwijac te zdolnosci
+ale nie wiesz czy masz szanse na rynku niemieckim, bo znasz angielski</p>
+</li>
+<li>
+<p>Znasz jezyk niemiecki, kulture ale nie znasz sie na programowaniu:</p>
+</li>
+</ol>
+<p>//TODO: TUTAJ analiz, lub skok do rozdziału jak analizować swój profil 
+// Polecenie:- moje narzedzia + nodejs  + python + firma szukajaca junirorow</p>
+<p>glownie webdevelopment i web app, bo na to jest zapotrzebowanie,
+uzycie gotowych narzedzi  + wizualna apicra i apiunit
+od razu wejscie na pole wysokiej produktywnosci</p>
+<ol start="3">
+<li>
+<p>Znasz sie na programowaniu, bo robisz to od wielu lat, szukasz nowych wyzwań, 
+znasz angielski, być może niemiecki i kulturę niemiecką ale chcialbyś poznać jak najefektywniej bez marnowania energii i czasu na niepotrzebne dziaania dotrzec do pracodawcy niemieckiego i tam dalej rozwijac swoje umiejetnosci.</p>
+</li>
+<li>
+<p>jestes w niemczech, czyli znasz niemiecki, angielski, polski, ... i myslisz o zmianie zawodu ale obawiasz sie ze nie jest to proste i chcialbys sie upewnic ze to wlasciwa decyzja i okreslic jak to zrobic najefektywniej i bezpolesnie dla zycia prywatnego.</p>
+</li>
+<li>
+<p>Potrzebujesz wiecej niz jest zawarte w tej ksiazce a nie chcesz czekac do nastepnego wydania:
+kontakt ze mna w celu otrzymania  wskazowek pozwalajacych od razu na realizacje, usluga platna ale spersonalizowana z gwarancja zwrotu w razie niezadowolenia w ciagu 2 tygodni.</p>
+</li>
+</ol>
+<p>support dla niecierpliwych na dluzej jesli jest taka potrzeba</p>
+<ol start="6">
+<li>W zasadzie nie musisz czytac tej ksiazki bo nie masz zadnych pytan,
+zapraszamy do napisania kolejnej czesci, wzbogaconej o wiecej detali i aktualnych zagadnien z branzy.
+Jesli moglbys zaoferowac pomoc tym, ktorzy pracy poszukuja a lbo juz to robisz to zapraszamy</li>
+</ol>
+<p>Wprowadzające</p>
+<p>Co obejmuje wg Ciebie pojęcie &quot;programista systemów wbudowanych&quot;, czym się to różni od programista-elektronik, konstruktor-elektronik. Czy zalicza się do tego również ktoś kto programuje układy FPGA?
+Jaki był najbardziej ekscytujący projekt systemu embedded jaki widziałeś?
+Jak wygląda odpowiedzialność za wykonywaną pracę w branży embedded. Takie oprogramowanie jest krytyczne w wielu obszarach i obarczone wieloma normami i ogromnym ryzykiem. Interesuje mnie fakty czy trzeba podpisywać dodatkowe umowy które obarczają programistę kosztami za popełniane błędy itp.
+Biorąc pod uwagę pytanie 2, jak radzisz sobie psychicznie z dużą presją jaką niesie praca w embedded?
+Wytwarzanie oprogramowania</p>
+<p>Główne bolączki obecnych narzędzi do projektowania systemów wbudowanych.
+Główne bolączki społeczności systemów embedded - co powoduje dlaczego zmiany zachodzą powoli i branża nie jest chętna na wprowadzanie nowinek.
+Jak wygląda testowanie urządzenia elektronicznego (HW i SW) w korporacjach lub poważnych firmach (nie dotyczy firm typu &quot;Janusz Soft&quot;)?
+Jakie wzorce projektowe są najczęściej używane w systemach embedded (SW)?
+Jakie metodologie wytwarzania oprogramowania są stosowane najczęściej i w jakich przypadkach.
+Metody debuggowania systemów embedded
+Multithread programming w embedded
+Rynek Pracy</p>
+<p>Jak wygląda rynek pracy (PL i zagranica) dla robotyków?
+Rynek pracy w Polsce i za granicą - czym się różnią. Gdzie najczęściej są poszukiwani programiści embedded i jakie kompetencje w tej chwili są pożądane.
+Czy Polacy stanowią silną grupę inżynierów pod względem umiejętności względem innych krajów w kontekście embedded?
+Czy wg Ciebie praca w embedded jest opłacalna w Polsce biorąc pod uwagę, że można programować rzeczy mniej restrykcyjne, łatwiejsze i za większą kasę?
+Jak wg Ciebie będzie wyglądać sposób programowania systemów wbudowanych w przyszłości. Czy znajomość architektury i niskopoziomowych mechanizmów i języków będzie się potrzebna do pracy?
+Dlaczego warto zajmować się systemami wbudowanymi.
+Dlaczego nie warto zajmować się sytemami wbudowanymi.
+Dlaczego hardware developer - konstruktor elektronik jest gorzej opłacany na rynku pracy niż programista embedded pomimo tego że musi opanować o wiele trudniejszą i niszową wiedzę i ponosi o wiele większą odpowiedzialność (błąd w HW kosztuje więcej niż w SW)?
+Przyszłość inżynierów-projektantów obwodów PCB. Czy będą nadal potrzebni biorąc pod uwagę takie narzędzia jak autoroutery itp.?
+Mikroprzedsiębiorstwo vs średnia firma vs korporacja. Plusy i minusy.
+Wiedza, osobowość, społeczność</p>
+<p>Co jest najtrudniejsze w zgłębianiu wiedzy nt. systemów embedded? Na jakie obszary wiedzy akademickiej warto zwrócić szczególną uwagę oraz czego należy się douczyć samemu?
+Różnica charakterów pomiędzy &quot;ludźmi embedded&quot; a resztą IT (chęć dzielenia się wiedzą, kultura, docenianie dokonań innych, chęć pomocy)
+Programiści embedded to przeważnie fanatycy elektroniki i programowania - pasjonaci pełną gębą. Niestety często praca (a tym samym odpowiedzialność, terminy, problemy) pozwala zabrać ulubione hobby i totalnie je obrzydzić. Czy zauważyłeś w branży przypadki wypalenia zawodowego? Jak żyjesz na codzień by ciebie to nie spotkało?
+Jakich cechy charakteru powinien posiadać dobry projektant systemów wbudowanych?
+Polecane źródła wiedzy.
+Jakie obszary IT/inżynierii warto poznać w podstawowym stopniu by skutecznie realizować codzienne obowiązki programisty systemów wbudowanych?
+Pytanie pokrywa się trochę z pytaniami odnoście umiejętności. Wymień &quot;must have&quot; programisty systemów wbudowanych.
+Sprzęt, narzędzia</p>
+<p>Jak wygląda praca zespołowa nad projektem PCB i jakie systemy kontroli wersji są stosowane? Czym różni się praca nad PCB od pracy nad firmwarem biorąc pod uwagę utrzymanie produktu?
+Jak wygląda proces projektowania obwodu PCB (etapy)? Czy w tym fachu również są stosowane jakieś metodologie?
+Którzy producenci mikrokontrolerów dostarczają wg Ciebie BSP najlepszej jakości do swojego hardware?
+FPGA? Czy jest sens się zajmować tą niszową dziedziną?
+Czym pod względem HW i SW różnią się restrykcje dotyczące poszczególnych obszarów: przemysł medyczny, kosmiczny, automotive, dowolny inny?
+IoT, ML - nowe technologie</p>
+<p>IoT - przemyślenia, możliwości, zagrożenia
+Jak programista embedded musi wiedzieć o ML.
+Jak wygląda integracja systemów ML z systemami embedded?
+👍 2
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018
+Jak dlugo gosc zajmuje sie tym?
+Czy stale dziala w Embedded czy robil cos w miedzyczasie innego?
+Jak pozyskal pierwsza prace dot. Embedded Systems?
+W ilu i jakich projektach pracowal?
+Jaka mial tam odpowowiedzialnosc?
+Jakie zarobki sa osiagalne?</p>
+<p>@GKotfis
+Gratuluje pytan, tylko prosze abyscie na poczatku rozmowy zaznaczyli ze Embedded System to o wiele obszerniejsze zagadnienie niz sie ludziom (typowym programistom) moze wydawac i ze to najpierw zaczelo sie od Hardware a dopiero potem Software, wiec raczej to Software Dev powinni uczyc sie od Embedded Dev i wlasnie takie pytanie prosze zadac:</p>
+<p>Czego Software Dev moze nauczyc sie od Embedded DEv i czego by sie nauczyl, gdyby nim zostal.
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+O Gosciu:
+Ma kilka lat doswiadczenia zawodowego
+Uczestniczyl 'w daj sie poznac'
+https://ucgosu.pl/2017/03/daj-sie-poznac-2017/</p>
+<p>Jeden z projektow
+https://ucgosu.pl/2017/03/schemat-ideowy-robota/</p>
+<p>Autor napisal, ze uzywa tam procesora, co jest niestosowne, w skali mikro mamy mikrokotntrolery, poniewaz sam procesor jest tylko jednym z elementow mikrokontrolera
+https://pl.wikipedia.org/wiki/Mikrokontroler
+mikrokomputer jednoukładowy – scalony system mikroprocesorowy, zrealizowany w postaci pojedynczego układu scalonego zawierającego jednostkę centralną (CPU), pamięć RAM oraz rozbudowane układy wejścia-wyjścia i na ogół pamięć programu jako FRAM, MRAM, ROM lub Flash.</p>
+<p>Blog
+https://ucgosu.pl/o-mnie/</p>
+<p>Repozytoria GIT na githubie
+https://github.com/ucgosupl?tab=repositories</p>
+<p>Kilka info z CV
+https://pl.linkedin.com/in/maciej-gajdzica-156370a8</p>
+<p>Starszy Projektant - Programista
+SOLWIT SA
+October 2015 – Present 3 years 2 months
+Gdańsk, woj. pomorskie, Polska</p>
+<p>Implementacja systemu embedded dla firmy z branży transportu kolejowego spełniającego normy bezpieczeństwa i SIL4.</p>
+<p>Software Engineer
+May 2014 – September 2015 1 year 5 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Rozwój Intel Data Plane Development Kit - biblioteki przetwarzającej pakiety sieciowe dla systemów unixowych napisanej w języku C.</p>
+<p>Software Specialist
+Innovation Code
+September 2012 – May 2014 1 year 9 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Rozwój systemów wbudowanych dla branży automatyki budynkowej wyposażonych w webserwer i integrację z systemami BMS komunikującymi się przy pomocy protokołów Modbus, Lonworks i BACnet. Do dodatkowych obowiązków należało zarządzanie projektami, praca koncepcyjna i prezentacja działających urządzeń u klientów.</p>
+<p>Software Test Engineer
+Intel Corporation
+June 2012 – August 2012 3 months
+Gdansk, Pomeranian District, Poland</p>
+<p>Tworzenie testów automatycznych pisanych w języku C# dla płyt głównych Intela do ultrabooków.
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+Dla Ciekawych poszukiwania pracy polecam
+https://www.glassdoor.de/Job/firmware-entwickler-jobs-SRCH_KO0,19.htm</p>
+<p>Z tego co widzialem zarobki nizsze niz typowego programisty.
+https://www.glassdoor.de/Job/firmware-entwickler-jobs-SRCH_KO0,19.htm</p>
+<p>Embedded-Software-Entwickler
+Firmware-Entwickler
+Tez jestem ciekaw dlaczego ludzie z papierami zarabiaja mniej, w dodatku faktyczna wiedza musi byc znacznie obszerniejsza niz typowego Software Dev.</p>
+<p>20 lat temu bardzo chcialem byc Embedded-Software-Entwickler ale w PL bylo malo ofert w ogole, a pracy dla elektronikow konstruktorow bylo niewiele, bo tylko duze firmy pozwalaly sobie na taki dzial konstruktorski, np: w Gdyni:
+http://www.radmor.com.pl/
+https://www.vector.net/en/home/</p>
+<p>Na przelomie 2000 roku byl kierunek chiny nieliczni jak potentant w Alarmach - Satel ciagle utrzymywal linie produkcyjna w Gdansku.</p>
+<p>Szkoda, bo gdyby nie brak miejsc pracy, to bym dzis mial troche inna profesje i placil podatki w Polsce - dobrze tez przypomniec troche historie, by zrozumiec to co dzieje sie dzis.
+Mimo wszystko Polska nadal nie daje takiej szansy na rozwoj, chociaz wolalbym sie mylic, byc moze gosc rzuci pozytywnym swiatlem?
+👍 1
+@tom-sapletta-com
+tom-sapletta-com commented on Nov 20, 2018 • 
+edited 
+przepraszam za lawine postow, jednak zalezy mi na przekazaniu prawdy o tej osobie, gosc jest jeszcze mlody i nie na wszystko musi znac odpowiedzi, wiec bede wyrozumialy po emisji audycji.
+Ma zaledwie kilka lat doswiadczenia i nie jest przeciez nauczycielem elektroniki, wiec w zasadzie moze lepiej gdyby opisal te spraw z perspektywy swoich historii a nie &quot;eksperta&quot;
+Nie ma tez doswiadczenia miedzynarodowego, wiec moze warto zawezic audycje do pewnego wycinka Polskiej - Gdanskiej rzeczywistosci.</p>
+<p>Moze Gosc by powiedzial cos o dzialalnosci poza praca, czy udziela sie w jakis spolecznosciach i dzieli wiedza, albo cos poleci z trojmiasta?
+Czy gosc zna jakies startupy z Embedded Systems poza praca ?
+Czy jesli Gosc ma wiedze i doswiadczenie to moglby cos powiedziec o tym jak to wyglada od srodka?
+👍 1</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../1/1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../2/jezyk-niemiecki.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../1/1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../2/jezyk-niemiecki.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

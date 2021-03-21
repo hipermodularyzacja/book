@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+# hipermodularyzacja . pl
+https://hipermodularyzacja.pl/
 
-You can use the [editor on GitHub](https://github.com/hipermodularyzacja/book/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+[README](README.md)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    ./install.bat
 
-### Markdown
+    ./start.bat
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    ./up.bat
 
-```markdown
-Syntax highlighted code block
+    ./browser.bat
 
-# Header 1
-## Header 2
-### Header 3
+https://github.com/hipermodularyzacja/book
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+## Wsparcie powstania książki
+TODO:
+https://help.github.com/en/articles/displaying-a-sponsor-button-in-your-repository
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## Przykładowy rozdział
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hipermodularyzacja/book/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+[hipermodularyzacja](https://book.hipermodularyzacja.pl/book/1/wstep.html)
 
-### Support or Contact
+# book
+Ebook hipermodularyzacja.pl
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Why learn webstream ?
