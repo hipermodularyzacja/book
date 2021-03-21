@@ -1,4 +1,8 @@
-# hipermodularyzacja . pl
+# book. hipermodularyzacja . pl
+[ebook - hipermodularyzacja.pl](https://book.hipermodularyzacja.pl/book/)
+
+Website:
+
 https://hipermodularyzacja.pl/
 
 [README](README.md)
@@ -26,6 +30,6 @@ https://help.github.com/en/articles/displaying-a-sponsor-button-in-your-reposito
 [hipermodularyzacja](https://book.hipermodularyzacja.pl/book/1/wstep.html)
 
 # book
-Ebook hipermodularyzacja.pl
+book.hipermodularyzacja.pl
 
 ## Why learn webstream ?
